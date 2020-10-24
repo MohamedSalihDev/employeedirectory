@@ -15,7 +15,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "homepage": "https://MohamedSalihDev.github.io/employeedirectory"
+    "homepage": "https://MohamedSalihDev.github.io/employeedirectory",
+    "predeploy": "npm run build",
+   "deploy": "gh-pages -d build"
+    
   },
   "eslintConfig": {
     "extends": "react-app"
