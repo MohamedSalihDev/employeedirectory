@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Card from "./Card";
 import coworkers from "../coworkers";
-import style from "./style.css";
+import "./style.css";
 function createCard(contact) {
     return (
         <Card
@@ -103,7 +103,7 @@ function App() {
     return (
         <div>
             <h1 className="heading">Employee Directory</h1>
-            <Dropdown useStateFunc={setState} />
+            <Dropdown />
             {appearance}
 
         </div>
