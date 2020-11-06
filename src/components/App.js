@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import Card from "./Card";
 import coworkers from "../coworkers";
-import "./style.css";
-
+import style from "./style.css";
 function createCard(contact) {
     return (
         <Card
@@ -50,42 +49,41 @@ function sortedCard() {
 
 
 
-function Dropdown() {
-    const [appearance, setState] = useState();
+function Dropdown(props) {
     function Switcher(e) {
         console.log("swithcer fired");
         if (e.target.name === "All") {
-            setState(showAll);
+            props.setState(showAll);
         } else if (e.target.name === "Coaches") {
-            return setState(showCoaches);
+            return props.setState(showCoaches);
         } else if (e.target.name === "Trainers") {
-            return setState(showTrainers);
+            return props.setState(showTrainers);
         } else if (e.target.name === "Admin") {
-            return setState(showAdmin);
+            return props.setState(showAdmin);
         } else if (e.target.name === "Sort") {
-            return setState(sortedCard);
+            return props.setState(sortedCard);
         }
     }
     return (
         <div>
-            <div className="dropdown" onClick={Switcher()}>
-                <button className="dropbtn" onClick={Switcher()}>
+            <div className="dropdown" onClick={Switcher}>
+                <button className="dropbtn" onClick={Switcher}>
                     Choose Employee Directory
       </button>
-                <div className="dropdown-content" onClick={Switcher()}>
-                    <a href="#" onChange={Switcher()} name="All">
+                <div className="dropdown-content" onClick={Switcher}>
+                    <a href="#" onChange={Switcher} name="All">
                         List All Co-workers
         </a>
-                    <a href="#" onChange={Switcher()} name="Coaches">
+                    <a href="#" onChange={Switcher} name="Coaches">
                         List Coaches only
         </a>
-                    <a href="#" onChange={Switcher()} name="Trainers">
+                    <a href="#" onChange={Switcher} name="Trainers">
                         List Trainers only
         </a>
-                    <a href="#" onChange={Switcher()} name="Admin">
+                    <a href="#" onChange={Switcher} name="Admin">
                         List Admin only
         </a>
-                    <a href="#" onChange={Switcher()} name="Sort">
+                    <a href="#" onChange={Switcher} name="Sort">
                         List all by alphabeical order
         </a>
                 </div>
@@ -97,10 +95,15 @@ function Dropdown() {
 function App() {
 
 
+    const [appearance, setState] = useState();
+
+
+
+
     return (
         <div>
             <h1 className="heading">Employee Directory</h1>
-            <Dropdown />
+            <Dropdown useStateFunc={setState} />
             {appearance}
 
         </div>
